@@ -1,4 +1,3 @@
-Copy
-export default function iterateThroughObject(reportWithIterator) {
+export default function iterateThroughObject (reportWithIterator) {
   return [...reportWithIterator].join(' | ');
 }
