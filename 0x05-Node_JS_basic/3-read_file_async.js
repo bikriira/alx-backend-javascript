@@ -1,8 +1,8 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 
-function countStudents(filePath) {
+async function countStudents(filePath) {
   try {
-    const data = fs.readFileSync(filePath, 'utf-8');
+    const data = await fs.readFile(filePath, 'utf-8');
     const lines = data
       .trim()
       .split('\n')
