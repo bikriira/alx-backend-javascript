@@ -32,7 +32,8 @@ app.get('/students', async (req, res) => {
     }
     res.send(responseText);
   } catch (error) {
-    res.status(404).end("Not found")
+    res.statusCode = 501;
+    res.end(error.message);
   }
 });
 
