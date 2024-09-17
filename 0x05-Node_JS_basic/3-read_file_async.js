@@ -24,10 +24,10 @@ async function countStudents(filePath) {
       console.log(
         `Number of students in ${field}: ${
           students.length
-        }. List: ${students.join(', ')}`,
+        }. List: ${students.join(', ')}`
       );
     }
-    return fields;
+    return { totalStudents: students.length, category: fields };
   } catch (error) {
     throw new Error('Cannot load the database');
   }
