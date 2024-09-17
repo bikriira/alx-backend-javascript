@@ -4,7 +4,7 @@ const countStudents = require('./3-read_file_async');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.type('text/plain').send('Hello Holberton School! ');
+  res.type('text/plain').send('Hello Holberton School!');
 });
 
 app.get('/students', async (req, res) => {
@@ -24,7 +24,7 @@ app.get('/students', async (req, res) => {
 
       responseText += `Number of students in ${field}: ${
         students.length
-      }. List: ${students.join(', ')}`;
+      }. List: ${students.join(',')}`;
 
       if (i < categories.length - 1) {
         responseText += '\n';
