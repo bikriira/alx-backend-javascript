@@ -10,7 +10,7 @@ const app = http.createServer(async (req, res) => {
   if (req.url === '/students') {
     res.write('This is the list of our students\n');
     try {
-      const data = await countStudents('database.csv');
+      const data = await countStudents(process.argv[2]);
       const categories = Object.entries(data.category);
       const { totalStudents } = data;
 
@@ -26,12 +26,12 @@ const app = http.createServer(async (req, res) => {
         );
 
         if (i < categories.length - 1) {
-          // res.write('\n');
+          res.write('\n');
         }
       }
     } catch (error) {
       res.statusCode = 501;
-      // res.write(error);
+      res.write(error);
     }
   }
   res.end();
