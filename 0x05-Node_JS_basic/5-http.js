@@ -8,6 +8,7 @@ const app = http.createServer(async (req, res) => {
     res.end();
   }
   if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     try {
       const data = await countStudents('database.csv');
       const entries = Object.entries(data);
@@ -16,18 +17,17 @@ const app = http.createServer(async (req, res) => {
         res.write(
           `Number of students in ${field}: ${
             students.length
-          }. List: ${students.join(', ')}`
+          }. List: ${students.join(', ')}`,
         );
         if (i < entries.length - 1) {
           res.write('\n');
         }
       }
-      res.end();
     } catch (error) {
       res.statusCode = 501;
-      res.end('Not found');
     }
   }
+  res.end();
 });
 app.listen(1245);
 
