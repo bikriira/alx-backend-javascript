@@ -14,7 +14,7 @@ const app = http.createServer(async (req, res) => {
       const categories = Object.entries(data.category);
       const { totalStudents } = data;
 
-      res.write(`Number of students: ${totalStudents}\n`);
+      if (totalStudents) res.write(`Number of students: ${totalStudents}\n`);
 
       for (let i = 0; i < categories.length; i += 1) {
         const [field, students] = categories[i];
@@ -22,12 +22,12 @@ const app = http.createServer(async (req, res) => {
         res.write(
           `Number of students in ${field}: ${
             students.length
-          }. List: ${students.join(', ')}`,
+          }. List: ${students.join(', ')}`
         );
 
-        // if (i < categories.length - 1) {
-        //   res.write('\n');
-        // }
+        if (i < categories.length - 1) {
+          res.write('\n');
+        }
       }
     } catch (error) {
       res.statusCode = 501;
