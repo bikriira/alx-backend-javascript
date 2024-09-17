@@ -13,7 +13,6 @@ app.get('/students', async (req, res) => {
   let responseText = 'This is the list of our students\n';
   try {
     const data = await countStudents(process.argv[2]);
-    console.log(process.argv[2]);
 
     const categories = Object.entries(data.category);
     const { totalStudents } = data;
@@ -35,6 +34,10 @@ app.get('/students', async (req, res) => {
   } catch (error) {
     res.status(500).send(error.message);
   }
+});
+
+app.use((req, res) => {
+  res.status(404).type('text/plain').send('Not found');
 });
 
 app.listen(1245);

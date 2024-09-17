@@ -11,7 +11,6 @@ const app = http.createServer(async (req, res) => {
     res.write('This is the list of our students\n');
     try {
       const data = await countStudents(process.argv[2]);
-      console.log(process.argv[2]);
 
       const categories = Object.entries(data.category);
       const { totalStudents } = data;
