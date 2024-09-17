@@ -32,8 +32,8 @@ app.get('/students', async (req, res) => {
     }
     res.send(responseText);
   } catch (error) {
-    res.statusCode = 501;
-    res.end(error.message);
+    res.type('text/plain');
+    res.status(500).send(error.message);
   }
 });
 
