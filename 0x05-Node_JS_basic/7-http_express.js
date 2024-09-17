@@ -32,7 +32,7 @@ app.get('/students', async (req, res) => {
     }
     res.send(responseText);
   } catch (error) {
-    res.status(404).send(error.message);
+    res.status(500).send(error.message);
   }
 });
 

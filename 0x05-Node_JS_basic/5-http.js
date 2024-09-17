@@ -32,8 +32,8 @@ const app = http.createServer(async (req, res) => {
       }
       res.end();
     } catch (error) {
-      res.statusCode = 501;
-      res.end(error.message);
+      // res.statusCode = 501;
+      // res.end(error.message);
     }
   } 
   // else {
