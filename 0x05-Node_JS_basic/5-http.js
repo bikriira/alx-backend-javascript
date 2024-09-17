@@ -25,13 +25,13 @@ const app = http.createServer(async (req, res) => {
           }. List: ${students.join(', ')}`,
         );
 
-        if (i < categories.length - 1) {
-          res.write('\n');
-        }
+        // if (i < categories.length - 1) {
+        //   res.write('\n');
+        // }
       }
     } catch (error) {
       res.statusCode = 501;
-      res.write(error);
+      // res.write(error);
     }
   }
   res.end();
