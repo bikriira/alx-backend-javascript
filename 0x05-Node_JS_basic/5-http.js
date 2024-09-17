@@ -35,11 +35,10 @@ const app = http.createServer(async (req, res) => {
       res.statusCode = 501;
       res.end(error.message);
     }
-  } 
-  // else {
-  //   res.statusCode = 404;
-  //   res.end('Not found');
-  // }
+  } else {
+    res.statusCode = 404;
+    res.end('Not found');
+  }
 });
 app.listen(1245);
 

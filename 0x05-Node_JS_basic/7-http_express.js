@@ -24,7 +24,7 @@ app.get('/students', async (req, res) => {
 
       responseText += `Number of students in ${field}: ${
         students.length
-      }. List: ${students.join(',')}`;
+      }. List: ${students.join(', ')}`;
 
       if (i < categories.length - 1) {
         responseText += '\n';
@@ -32,8 +32,10 @@ app.get('/students', async (req, res) => {
     }
     res.send(responseText);
   } catch (error) {
-    res.type('text/plain');
-    res.status(500).send(error.message);
+    responseText += error.message;
+    res.status(500);
+  } finally {
+    res.send(responseText);
   }
 });
 
