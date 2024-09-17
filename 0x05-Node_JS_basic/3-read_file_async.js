@@ -24,7 +24,7 @@ async function countStudents(filePath) {
       console.log(
         `Number of students in ${field}: ${
           students.length
-        }. List: ${students.join(', ')}`
+        }. List: ${students.join(', ')}`,
       );
     }
     return fields;
