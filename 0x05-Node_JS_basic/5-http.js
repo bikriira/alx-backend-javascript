@@ -7,12 +7,17 @@ const app = http.createServer(async (req, res) => {
   if (req.url === '/students') {
     try {
       const data = await countStudents('database.csv');
-      for (const [field, students] of Object.entries(data)) {
+      const entries = Object.entries(data);
+      for (let i = 0; i < entries.length; i += 1) {
+        const [field, students] = entries[i];
         res.write(
           `Number of students in ${field}: ${
             students.length
-          }. List: ${students.join(', ')}\n`,
+          }. List: ${students.join(', ')}`,
         );
+        if (i < entries.length - 1) {
+          res.write('\n');
+        }
       }
     } catch (error) {
       res.statusCode = 501;
