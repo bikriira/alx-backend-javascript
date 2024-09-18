@@ -13,7 +13,7 @@ class StudentsController {
           responseText += '\n';
         }
       });
-      
+
       response.status(200).send(responseText);
     } catch (error) {
       console.log(error);
@@ -22,7 +22,7 @@ class StudentsController {
   }
 
   static async getAllStudentsByMajor(request, response) {
-    const major = request.params.major;
+    const { major } = request.params;
     if (!['CS', 'SWE'].includes(major)) {
       return response.status(500).send('Major parameter must be CS or SWE');
     }

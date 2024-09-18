@@ -1,4 +1,4 @@
-import fs  from "fs/promises";
+import fs from 'fs/promises';
 
 export default function readDatabase(filePath) {
   return new Promise(async (resolve, reject) => {
