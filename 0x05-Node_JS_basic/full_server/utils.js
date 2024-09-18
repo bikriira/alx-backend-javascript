@@ -1,9 +1,8 @@
 import fs from 'fs/promises';
 
 export default function readDatabase(filePath) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const data = await fs.readFile(filePath, 'utf-8');
+  return fs.readFile(filePath, 'utf-8')
+    .then((data) => {
       const lines = data
         .trim()
         .split('\n')
@@ -18,9 +17,9 @@ export default function readDatabase(filePath) {
         }
         fields[field].push(firstName);
       });
-      resolve(fields);
-    } catch (error) {
-      reject(error);
-    }
-  });
+      return fields;
+    })
+    .catch((error) => {
+      throw error;
+    });
 }
